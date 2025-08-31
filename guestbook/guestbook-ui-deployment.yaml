@@ -18,3 +18,11 @@ spec:
           name: guestbook-ui
           ports:
             - containerPort: 80
+        volumeMounts:
+        - name: app-secret-vol
+          mountPath: "/app/crds"
+          readOnly: true            
+      volumes:
+      - name: app-secret-vol
+        secret:
+          secretName: aws-crds-k8s
